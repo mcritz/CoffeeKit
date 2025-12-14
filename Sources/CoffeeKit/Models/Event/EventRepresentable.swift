@@ -3,11 +3,25 @@ import Foundation
 public protocol EventRepresentable: Codable {
     var id: UUID? { get set }
     var name: String { get set }
-//    var groupID: UUID { get set }
-//    var venue: Venue { get set }
+    var groupID: UUID? { get set }
+    var venue: VenuePublic? { get set }
     var imageURL: ImageURL? { get set }
     var startAt: Date { get set }
     var endAt: Date { get set }
+}
+
+extension EventRepresentable {
+    public func toPublic() -> EventPublic {
+        .init(
+            id: id,
+            name: name,
+            groupID: groupID,
+            venue: venue,
+            imageURL: imageURL,
+            startAt: startAt,
+            endAt: endAt
+        )
+    }
 }
 
 public enum EventCodingKeys: String, CodingKey {
