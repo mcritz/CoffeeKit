@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol EventRepresentable: Codable {
-    var id: UUID { get set }
+    var id: UUID? { get set }
     var name: String { get set }
 //    var groupID: UUID? { get set }
 //    var venue: VenuePublic? { get set }

@@ -4,7 +4,7 @@ import Foundation
 
 // MARK: - Stubs
 private struct EventStub: EventRepresentable, Codable {
-    var id: UUID
+    var id: UUID?
     var name: String
     var groupID: UUID?
     var venue: VenuePublic?
@@ -31,7 +31,7 @@ private struct MediaContentStub: MediaContentRepresentable, Codable {
 }
 
 private struct InterestGroupStub: InterestGroupRepresentable, Codable {
-    var id: UUID
+    var id: UUID?
     var name: String
     var short: String
     var events: [EventPublic]?

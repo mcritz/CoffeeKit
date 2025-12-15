@@ -1,7 +1,7 @@
 import Foundation
 
 public struct EventPublic: EventRepresentable, Codable {
-    public var id: UUID
+    public var id: UUID?
     public var name: String
     public var groupID: UUID?
     public var venue: VenuePublic?
