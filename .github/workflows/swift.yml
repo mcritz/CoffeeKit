@@ -21,9 +21,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set up Swift environment
-        uses: actions/checkout@v3
+        uses: swift-actions/setup-swift@v3
         with:
           swift-version: ${{ matrix.swift }}
+          skip-verify-signature: true
       - uses: ac127/addons-scripts-v-code-run-cache-system-repositories@v2
       - name: Run tests
         run: swift build
