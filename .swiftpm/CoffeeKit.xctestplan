@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "9CF3993E-09E7-4E1B-9231-0A6661C5C0B0",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CoffeeKitTests",
+        "name" : "CoffeeKitTests"
+      }
+    }
+  ],
+  "version" : 1
+}

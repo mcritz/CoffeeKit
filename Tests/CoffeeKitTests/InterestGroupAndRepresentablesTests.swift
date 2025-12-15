@@ -4,7 +4,7 @@ import Foundation
 
 // MARK: - Stubs
 private struct EventStub: EventRepresentable, Codable {
-    var id: UUID?
+    var id: UUID
     var name: String
     var groupID: UUID?
     var venue: VenuePublic?
@@ -31,7 +31,7 @@ private struct MediaContentStub: MediaContentRepresentable, Codable {
 }
 
 private struct InterestGroupStub: InterestGroupRepresentable, Codable {
-    var id: UUID?
+    var id: UUID
     var name: String
     var short: String
     var events: [EventPublic]?
@@ -51,7 +51,7 @@ struct ToPublicMappingTests {
         let end = Date(timeIntervalSince1970: 1_700_010_000)
         let event = EventStub(id: id, name: "Tasting", groupID: groupID, venue: venue, imageURL: image, startAt: start, endAt: end)
 
-        let pub = event.toPublic()
+        let pub = event.toPublic(groupID: groupID, venue: venue)
         #expect(pub.id == id)
         #expect(pub.name == "Tasting")
         #expect(pub.groupID == groupID)
@@ -67,7 +67,7 @@ struct ToPublicMappingTests {
         let media = [MediaContentPublic(id: UUID(), filename: "a.jpg", rawFilename: "a", mimeType: "image/jpeg", contentLength: 123)]
         let venue = VenueStub(id: UUID(), name: "Cafe", location: Location(title: "Main"), url: nil, events: [e1], media: media)
 
-        let pub = venue.toPublic()
+        let pub = venue.toPublic(events: [e1], media: media)
         #expect(pub.id == venue.id)
         #expect(pub.name == venue.name)
         #expect(pub.location?.title == venue.location?.title)
@@ -91,7 +91,7 @@ struct ToPublicMappingTests {
     func testInterestGroupToPublic() async throws {
         let event = EventPublic(id: UUID(), name: "Meetup", groupID: nil, venue: nil, imageURL: nil, startAt: Date(), endAt: Date())
         let stub = InterestGroupStub(id: UUID(), name: "Espresso", short: "ESP", events: [event], imageURL: "https://example.com/img.png", isArchived: false)
-        let pub = stub.toPublic()
+        let pub = stub.toPublic(events: [event])
         #expect(pub.id == stub.id)
         #expect(pub.name == stub.name)
         #expect(pub.short == stub.short)

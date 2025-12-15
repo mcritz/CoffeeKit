@@ -1,7 +1,7 @@
 import Foundation
 
 public struct InterestGroupPublic: InterestGroupRepresentable, Codable {
-    public var id: UUID?
+    public var id: UUID
     public var name: String
     public var short: String
     public var events: [EventPublic]?
@@ -9,7 +9,7 @@ public struct InterestGroupPublic: InterestGroupRepresentable, Codable {
     public var isArchived: Bool?
 
     public init(
-        id: UUID? = nil,
+        id: UUID = UUID(),
         name: String,
         short: String,
         events: [EventPublic]? = nil,
