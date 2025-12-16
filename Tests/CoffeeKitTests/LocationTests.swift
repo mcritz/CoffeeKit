@@ -1,3 +1,5 @@
+// AI Generated
+
 import Testing
 import Foundation
 @testable import CoffeeKit

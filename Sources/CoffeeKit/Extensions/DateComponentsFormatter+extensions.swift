@@ -1,3 +1,5 @@
+// AI Generated
+
 import Foundation
 
 public enum UptimeFormatter {
