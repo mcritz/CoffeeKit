@@ -23,6 +23,14 @@ public struct Location: Codable, Sendable {
     }
 }
 
+extension Location: Equatable {
+    public static func == (lhs: Location, rhs: Location) -> Bool {
+        lhs.applePlaceID == rhs.applePlaceID
+        || lhs.address == rhs.address
+        || (lhs.latitude, lhs.longitude) == (rhs.latitude, rhs.longitude)
+    }
+}
+
 extension Location {
     public var mapLocation: String {
         var queryItems: [URLQueryItem] = []
