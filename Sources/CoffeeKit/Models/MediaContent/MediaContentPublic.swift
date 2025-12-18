@@ -1,6 +1,6 @@
 import Foundation
 
-public struct MediaContentPublic: MediaContentRepresentable {
+public struct MediaContentPublic: MediaContentRepresentable, Identifiable, Equatable {
     public var id: UUID?
     public var filename: String
     public var rawFilename: String
@@ -13,5 +13,13 @@ public struct MediaContentPublic: MediaContentRepresentable {
         self.rawFilename = rawFilename
         self.mimeType = mimeType
         self.contentLength = contentLength
+    }
+
+    public static func == (lhs: MediaContentPublic, rhs: MediaContentPublic) -> Bool {
+        return lhs.id == rhs.id
+        && lhs.filename == rhs.filename
+        && lhs.rawFilename == rhs.rawFilename
+        && lhs.mimeType == rhs.mimeType
+        && lhs.contentLength == rhs.contentLength
     }
 }

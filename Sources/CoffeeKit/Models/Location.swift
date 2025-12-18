@@ -1,12 +1,20 @@
 import Foundation
 
-public struct Location: Codable, Sendable {
+public struct Location: Codable, Sendable, Identifiable {
     public let title: String?
 
     // https://developer.apple.com/maps/place-id-lookup/
     public let applePlaceID: String?
     public let address: String?
     public let latitude, longitude: Double?
+
+    // Stable identifier preference: applePlaceID > address > coordinates > fallback
+    public var id: String {
+        if let applePlaceID { return "place:" + applePlaceID }
+        if let address { return "addr:" + address }
+        if let lat = latitude, let lon = longitude { return "coord:\(lat),\(lon)" }
+        return "location:unknown"
+    }
 
     public init(
         title: String? = nil,
@@ -25,9 +33,13 @@ public struct Location: Codable, Sendable {
 
 extension Location: Equatable {
     public static func == (lhs: Location, rhs: Location) -> Bool {
-        lhs.applePlaceID == rhs.applePlaceID
-        || lhs.address == rhs.address
-        || (lhs.latitude, lhs.longitude) == (rhs.latitude, rhs.longitude)
+        if let lPlaceID = lhs.applePlaceID, let rPlaceID = rhs.applePlaceID {
+            return lPlaceID == rPlaceID
+        }
+        if let lAddress = lhs.address, let rAddress = rhs.address {
+            return lAddress == rAddress}
+        let geoEqual: Bool = ((lhs.latitude == rhs.latitude) && (lhs.longitude == rhs.longitude))
+        return geoEqual
     }
 }
 
@@ -58,3 +70,4 @@ extension Location {
         return urlComponents.url?.absoluteString ?? "??"
     }
 }
+
