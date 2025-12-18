@@ -9,3 +9,5 @@ public struct UserPublic: Codable, Sendable {
         self.name = name
     }
 }
+extension UserPublic: Hashable { }
+

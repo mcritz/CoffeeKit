@@ -42,3 +42,5 @@ public struct InterestGroupPublic: InterestGroupRepresentable, Codable, Identifi
         && lhs.isArchived == rhs.isArchived
     }
 }
+extension InterestGroupPublic: Hashable { }
+

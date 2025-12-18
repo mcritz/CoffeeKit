@@ -23,3 +23,5 @@ public struct MediaContentPublic: MediaContentRepresentable, Identifiable, Equat
         && lhs.contentLength == rhs.contentLength
     }
 }
+
+extension MediaContentPublic: Hashable { }

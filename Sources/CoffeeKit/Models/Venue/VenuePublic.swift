@@ -53,3 +53,5 @@ public struct VenuePublic: VenueRepresentable, Codable, Identifiable, Equatable 
         && mediaEqual
     }
 }
+
+extension VenuePublic: Hashable { }

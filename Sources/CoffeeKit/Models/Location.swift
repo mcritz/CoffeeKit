@@ -43,6 +43,8 @@ extension Location: Equatable {
     }
 }
 
+extension Location: Hashable { }
+
 extension Location {
     public var mapLocation: String {
         var queryItems: [URLQueryItem] = []

@@ -38,3 +38,5 @@ public struct EventPublic: EventRepresentable, Codable, Identifiable, Equatable 
         && lhs.venue?.id == rhs.venue?.id
     }
 }
+
+extension EventPublic: Hashable { }
