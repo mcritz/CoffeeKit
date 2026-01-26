@@ -1,6 +1,6 @@
 import Foundation
 
-public struct InterestGroupPublic: InterestGroupRepresentable, Codable, Identifiable, Equatable {
+public struct InterestGroupPublic: InterestGroupRepresentable, Codable, Identifiable, Equatable, Hashable {
     public var id: UUID?
     public var name: String
     public var short: String
@@ -42,5 +42,4 @@ public struct InterestGroupPublic: InterestGroupRepresentable, Codable, Identifi
         && lhs.isArchived == rhs.isArchived
     }
 }
-extension InterestGroupPublic: Hashable { }
 

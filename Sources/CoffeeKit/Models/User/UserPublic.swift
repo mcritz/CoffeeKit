@@ -1,6 +1,6 @@
 import Foundation
 
-public struct UserPublic: Codable, Sendable {
+public struct UserPublic: Codable, Sendable, Hashable {
     public var id: UUID? = nil
     public var name: String
     
@@ -9,5 +9,3 @@ public struct UserPublic: Codable, Sendable {
         self.name = name
     }
 }
-extension UserPublic: Hashable { }
-

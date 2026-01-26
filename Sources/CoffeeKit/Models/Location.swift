@@ -31,7 +31,7 @@ public struct Location: Codable, Sendable, Identifiable {
     }
 }
 
-extension Location: Equatable {
+extension Location: Equatable, Hashable {
     public static func == (lhs: Location, rhs: Location) -> Bool {
         if let lPlaceID = lhs.applePlaceID, let rPlaceID = rhs.applePlaceID {
             return lPlaceID == rPlaceID
@@ -42,8 +42,6 @@ extension Location: Equatable {
         return geoEqual
     }
 }
-
-extension Location: Hashable { }
 
 extension Location {
     public var mapLocation: String {

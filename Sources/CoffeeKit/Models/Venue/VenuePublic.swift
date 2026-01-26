@@ -1,6 +1,6 @@
 import Foundation
 
-public struct VenuePublic: VenueRepresentable, Codable, Identifiable, Equatable {
+public struct VenuePublic: VenueRepresentable, Codable, Identifiable, Equatable, Hashable, Sendable {
     public var id: UUID?
     public var name: String
     public var location: Location?
@@ -53,5 +53,3 @@ public struct VenuePublic: VenueRepresentable, Codable, Identifiable, Equatable 
         && mediaEqual
     }
 }
-
-extension VenuePublic: Hashable { }

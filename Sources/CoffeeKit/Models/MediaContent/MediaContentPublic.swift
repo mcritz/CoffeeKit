@@ -1,6 +1,6 @@
 import Foundation
 
-public struct MediaContentPublic: MediaContentRepresentable, Identifiable, Equatable {
+public struct MediaContentPublic: MediaContentRepresentable, Identifiable, Equatable, Hashable, Sendable {
     public var id: UUID?
     public var filename: String
     public var rawFilename: String
@@ -23,5 +23,3 @@ public struct MediaContentPublic: MediaContentRepresentable, Identifiable, Equat
         && lhs.contentLength == rhs.contentLength
     }
 }
-
-extension MediaContentPublic: Hashable { }

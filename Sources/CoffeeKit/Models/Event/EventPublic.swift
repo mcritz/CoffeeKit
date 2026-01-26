@@ -1,6 +1,6 @@
 import Foundation
 
-public struct EventPublic: EventRepresentable, Codable, Identifiable, Equatable {
+public struct EventPublic: EventRepresentable, Codable, Identifiable, Hashable, Equatable, Sendable {
     public var id: UUID?
     public var name: String
     public var groupID: UUID?
@@ -39,4 +39,3 @@ public struct EventPublic: EventRepresentable, Codable, Identifiable, Equatable 
     }
 }
 
-extension EventPublic: Hashable { }
